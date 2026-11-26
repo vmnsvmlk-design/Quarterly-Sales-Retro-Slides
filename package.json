@@ -1,0 +1,20 @@
+{
+  "name": "quarterly-sales-retro-slides",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SpotDraft quarterly sales retro deck by AE and team - live from HubSpot, targets from the Regional Interlocks dashboard.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node test/metrics.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "pptxgenjs": "^3.12.0"
+  }
+}

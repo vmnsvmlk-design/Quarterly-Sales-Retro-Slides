@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpotDraft Quarterly Sales Retro</title>
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="top">
+  <img src="/logo.png" alt="SpotDraft" class="brand">
+  <div class="sep"></div>
+  <div class="titles">
+    <div class="name">Quarterly Sales Retro</div>
+    <div class="sub" id="asOf">LOADING LIVE DATA…</div>
+  </div>
+  <div class="chip" id="periodChip">-</div>
+  <div class="spacer"></div>
+  <button class="export ghost" id="refreshBtn" title="Pull the latest numbers from HubSpot now (otherwise every 20 minutes)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/></svg>
+    <span>Refresh data</span>
+  </button>
+  <button class="export" id="downloadBtn" disabled>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 17v3h16v-3"/></svg>
+    <span>Download as .pptx</span>
+  </button>
+</header>
+<aside class="side">
+  <div class="sideHead"><span id="slideCount">SLIDES</span></div>
+  <div class="thumbs" id="thumbs"></div>
+</aside>
+<main class="stage" id="stage"><div class="frame" id="frame"></div><div class="loading" id="loading">Pulling live data from HubSpot and Regional Interlocks…</div></main>
+<footer class="bottom">
+  <div class="hint" id="hint">Click any number to see the deals behind it · click an Insights box to type, it saves when you click away</div>
+  <div class="nav"><button id="prev" aria-label="Previous slide">‹</button><span id="counter">- / -</span><button id="next" aria-label="Next slide">›</button></div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="picker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+  <div class="modalBox pickBox">
+    <div class="modalHead">
+      <div><div class="modalTitle" id="pickerTitle">Download as .pptx</div><div class="modalMeta" id="pickerMeta">Pick the slides to include</div></div>
+      <a href="#" id="pickAll">Select all</a><a href="#" id="pickNone">Clear</a>
+      <button class="x" id="pickerClose" aria-label="Close">×</button>
+    </div>
+    <div class="pickBody" id="pickList"></div>
+    <div class="modalFoot">
+      <span class="modalMeta">Insights typed on the slides are included. Page numbers follow the slides you pick.</span>
+      <button class="export" id="pickGo"><span id="pickGoLabel">Download</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="drill" role="dialog" aria-modal="true" aria-labelledby="drillTitle">
+  <div class="modalBox drillBox">
+    <div class="modalHead">
+      <div><div class="modalTitle" id="drillTitle">Deals</div><div class="modalMeta" id="drillMeta"></div></div>
+      <input id="drillSearch" type="search" placeholder="Filter…" aria-label="Filter deals">
+      <button class="btn" id="drillCsv">Download CSV</button>
+      <button class="x" id="drillClose" aria-label="Close">×</button>
+    </div>
+    <div class="drillBody"><table id="drillTable"></table></div>
+  </div>
+</div>
+<script src="/vendor/pptxgen.bundle.js"></script>
+<script src="/render.js"></script>
+<script src="/slides.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
