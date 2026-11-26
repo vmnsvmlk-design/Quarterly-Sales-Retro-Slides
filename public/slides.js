@@ -164,7 +164,7 @@
         { type: 'image', src: '/logo-white.png', x: 120, y: 100, w: 240, h: 47 },
         { type: 'rect', x: 120, y: 236, w: 96, h: 8, fill: C.blue },
         { type: 'text', x: 120, y: 260, w: 1200, h: 130, text: team.title, font: 'serif', size: 110, color: C.white },
-        { type: 'text', x: 120, y: 392, w: 1600, h: 40, text: team.long + ' · ' + team.reps.length + ' AE' + (team.reps.length === 1 ? '' : 's') + ' · ' + P().combined.label, font: 'mono', size: 26, color: '#E2A58A', tracking: 0.04 },
+        { type: 'text', x: 120, y: 392, w: 1600, h: 40, text: team.reps.length + ' AE' + (team.reps.length === 1 ? '' : 's') + ' · ' + P().combined.label, font: 'mono', size: 26, color: '#E2A58A', tracking: 0.04 },
         { type: 'text', x: 120, y: 440, w: 1680, h: 70, text: team.reps.map(function (r) { return r.name; }).join('  ·  ') || 'No AEs on the roster', size: 22, color: C.grey, lineHeight: 1.4 }
       ];
       var tiles = [

@@ -35,9 +35,10 @@ async function buildRetro() {
   const idByName = {};
   for (const [id, name] of Object.entries(hub.ownerNames)) idByName[norm(name)] = id;
 
+  const excluded = new Set((C.excludedAEs || []).map(norm));
   const teamOfOwner = {};
   const teams = C.teams.map((t) => {
-    const reps = targets.roster.filter((r) => r.region === t.key).map((r) => {
+    const reps = targets.roster.filter((r) => r.region === t.key && !excluded.has(norm(r.name))).map((r) => {
       const ownerId = r.ownerId && hub.ownerNames[r.ownerId] ? r.ownerId : idByName[norm(r.name)] || r.ownerId || null;
       const tg = targetsBlock(targets, r.name, periods);
       const per = {};
@@ -63,7 +64,7 @@ async function buildRetro() {
       m.attainment = attain(m.revenue.achieved, m.target);
       total[k] = m;
     }
-    return { key: t.key, title: t.title, long: t.long, reps: reps.map(({ show, ...r }) => r), total };
+    return { key: t.key, title: t.title, reps: reps.map(({ show, ...r }) => r), total };
   });
 
   const allOwners = teams.flatMap((t) => t.reps.map((r) => r.ownerId)).filter(Boolean);

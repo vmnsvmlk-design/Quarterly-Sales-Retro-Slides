@@ -43,10 +43,13 @@ module.exports = {
     stages.closedWon, stages.ddvClosedWon, stages.closedLost, stages.debook],
   dateEntered: (stageId) => `hs_v2_date_entered_${stageId}`,
   teams: [
-    { key: "NAM", title: "NAM", long: "North America" },
-    { key: "EMEA", title: "EMEA", long: "Europe, Middle East & Africa" },
-    { key: "APAC", title: "APAC", long: "Asia Pacific" },
+    { key: "NAM", title: "NAM" },
+    { key: "EMEA", title: "EMEA" },
+    { key: "APAC", title: "APAC" },
   ],
+  // AEs left out of the deck even if the Regional Interlocks roster still lists them
+  // (left the company or moved to another role).
+  excludedAEs: ["Elizabeth Doolittle", "Harish Murali", "Marshall Deutz"],
   // How far back an MQL can have been created and still be in the opening balance.
   mqlLookbackDays: 730,
 };
